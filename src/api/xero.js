@@ -1,6 +1,6 @@
-export async function fetchTrialBalance() {
+export async function fetchXeroAccounts() {
   try {
-    const response = await fetch(`/api/quickbooks_tb`, {
+    const response = await fetch(`/api/xero_accounts`, {
       method: 'GET',
       credentials: 'include',
     });
@@ -16,5 +16,3 @@ export async function fetchTrialBalance() {
     console.error('Error:', error);
   }
 }
-
-

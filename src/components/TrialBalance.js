@@ -4,27 +4,31 @@ import { formatData } from '../utils/helpers.js';
 
 function TrialBalance() {
   const [formattedData, setformattedData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchTrialBalance();
-        const formattedData = formatData(data);
-        setformattedData(formattedData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    
-    fetchData();
-  }, []);
-
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const data = await fetchTrialBalance();
+      const formattedData = formatData(data);
+      setformattedData(formattedData);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  if (!formattedData || Object.keys(formattedData).length === 0) {
+    return (
+      <>
+      <button type='submit' onClick={fetchData}>Fetch QB TB Data</button>
+      </>
+    )
+   }
 
 return (
   <div>
@@ -56,9 +60,6 @@ return (
     </table>
   </div>
 );
-
-
-
 
 }
 

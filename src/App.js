@@ -1,6 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import TrialBalance from './components/TrialBalance';
+import ZohoAccounts from './components/ZohoAccounts';
+import HubspotContacts from './components/HubspotContacts';
+import Xero from './components/Xero';
 
 function App() {
   return (
@@ -10,6 +12,9 @@ function App() {
       </header>
       <section>
         <TrialBalance />
+        <ZohoAccounts />
+        <HubspotContacts />
+        <Xero />
       </section>
     </div>
   );
